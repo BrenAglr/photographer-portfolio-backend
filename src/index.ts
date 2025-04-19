@@ -1,20 +1,12 @@
-import express from 'express';
-import cors from 'cors';
-import dotenv from 'dotenv';
+import server from "./server"
+import { PORT } from "./config/envs"
+import "reflect-metadata"
 
-dotenv.config();
+const initializeApp = () => {
+    server.listen(PORT, () => {
+        console.log(`Server listening on port ${PORT}`);
+        
+})
+}
 
-const app = express();
-const PORT = process.env.PORT || 4000;
-
-app.use(cors());
-app.use(express.json());
-
-app.get('/', (_req, res) => {
-  res.send('Backend running');
-});
-
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-});
-
+initializeApp()
